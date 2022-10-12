@@ -37,7 +37,7 @@
             <h1 id="colorlib-logo"><a href="index.html">elen<span>.</span></a></h1>
             <nav id="colorlib-main-menu" role="navigation">
                 <ul>
-                    <li class="colorlib-active"><a href="index.html">Home</a></li>
+                    <li class="colorlib-active"><a href="index.html">Home777</a></li>
                     <li><a href="photography.html">Photography</a></li>
                     <li><a href="travel.html">Travel</a></li>
                     <li><a href="fashion.html">Fashion</a></li>
