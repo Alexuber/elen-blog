@@ -34,7 +34,7 @@ if ($result = $conn->query($sql)) : // если мы подключились к
                     <div class="meta-wrap align-items-center">
                         <div class="half order-md-last">
                             <p class="meta">
-                                <span><i class="icon-heart"></i>3</span>
+                                <span class="likeBtn" data-id="<?php echo $row['id']; ?>"><i class="icon-heart"></i>3</span>
                                 <span><i class="icon-eye"></i>100</span>
                                 <span><i class="icon-comment"></i>5</span>
                             </p>

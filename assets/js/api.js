@@ -1,8 +1,13 @@
-$.post(
-  "/api.php?p=like",
-  { post_id: 1, user_id: 1 },
-  function (data) {
-    console.log(data); // 2pm
-  },
-  "json"
-);
+// вешаем функцию на событие
+$('.likeBtn').on('click', function (e) {
+  console.dir($(this).data('id'));
+  $.post(
+    // передаем пост запрос
+    "/api.php?p=like", // на страницу лайк
+    { post_id: $(this).data('id') }, // с параметрами пост_айди и юзер_айд
+    function (data) {
+      console.log(data);
+    },
+    "json"
+  );
+});
