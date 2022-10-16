@@ -1,13 +1,22 @@
 // вешаем функцию на событие
 $('.likeBtn').on('click', function (e) {
-  console.dir($(this).data('id'));
-  $.post(
-    // передаем пост запрос
-    "/api.php?p=like", // на страницу лайк
-    { post_id: $(this).data('id') }, // с параметрами пост_айди и юзер_айд
-    function (data) {
-      console.log(data);
-    },
-    "json"
-  );
-});
+    let that = $(this);
+//   console.dir($(this).data('id'));
+      
+  // передаем пост запрос
+  $.post("/api.php?p=like", // на страницу лайк
+    {post_id: that.data('id')})
+    .done(function(data) {
+        
+        console.dir(data);
+
+        console.dir(that);
+
+          if(data == 'liked') {
+            that.addClass('liked'); 
+          } else {
+            that.removeClass("liked"); 
+          } 
+    }); 
+})
+
