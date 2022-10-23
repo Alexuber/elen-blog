@@ -17,19 +17,22 @@ if(isset($_POST['post_id'])) {  // якщо в нас є запити ПОСТ
                 // перевіряємо якщо є записи
                 $sql = "DELETE FROM users_post_likes WHERE user_id=" . $user['id'] . " AND post_id=" . $_POST['post_id'];
                 $conn->query($sql);
-
-                echo 'disliked';
+                
+                echo json_encode(['status' => 'disliked', 'count' => 1]);
+                // echo 'disliked';
             } else {
 
                 $sql = "INSERT INTO `users_post_likes` (`post_id`, `user_id`) VALUES ('" . $_POST['post_id'] . "', '" . $user['id'] . "');";                            // если пользователь авторизован - делаем добавление в БД               
                 if ($result = $conn->query($sql)) {
-                    echo 'liked';
+                    // echo 'liked';
+                    echo json_encode(['status' => 'liked', 'count' => 2]);
                 }
             }
+        }
         } else {
             echo 'no login';
         }
-    }
+    
 } else {
     echo 'Error';
 // print_r($_COOKIE);

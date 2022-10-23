@@ -8,15 +8,27 @@ $('.likeBtn').on('click', function (e) {
     {post_id: that.data('id')})
     .done(function(data) {
         
-        console.dir(data);
+       console.dir(data); 
+        data = JSON.parse(data);
+      
 
-        console.dir(that);
-
-          if(data == 'liked') {
-            that.addClass('liked'); 
-          } else {
-            that.removeClass("liked"); 
+          if(data.status !== 'disliked') {
+            that.addClass('liked');
           } 
+          else {
+            that.removeClass('liked');  
+          }
+          that.find('b').text(data.count);
     }); 
 })
+
+
+// if(data !== 'liked') {
+//   that.toggleClass('disliked');
+// } 
+// else {
+//   that.addClass('disliked');
+// }
+// console.dir(that);
+
 

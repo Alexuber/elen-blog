@@ -34,7 +34,35 @@ if ($result = $conn->query($sql)) : // если мы подключились к
                     <div class="meta-wrap align-items-center">
                         <div class="half order-md-last">
                             <p class="meta">
-                                <span class="likeBtn" data-id="<?php echo $row['id']; ?>"><i class="icon-heart"></i>3</span>
+                                
+                            <?php 
+                            
+                            $likesSQL = 'SELECT count(*) as total FROM users_post_likes WHERE post_id=' . $row['id']; // звертаємосб до БД щоб встановити кількість рядків з лайками - total
+                            $likesResult = $conn->query($likesSQL);
+
+                            // перевіряємо чи є в нас користувач
+                            if(isset($_COOKIE['user'])) {
+                                $likesUserSQL = 'SELECT count(*) as total FROM users_post_likes WHERE post_id=' . $row['id']
+                                . 'user_id=' . $_COOKIE['user'];
+                                $likesUserResult = $conn->query($likesSQL);
+ 
+                            }
+                            
+                            ?>
+                                <span class="likeBtn" 
+
+                                <?php
+                                if(isset($likesUserResult) && $likesUserResult->fetch_assoc()['total'] > 0) {
+                                    echo "liked";
+                                }
+
+                                ?>
+                                
+                                data-id="<?php echo $row['id']; ?>"><i class="icon-heart"></i><b>
+                                
+                                    <!-- виводим кількість лайків на сторінку -->
+                                    <?php echo $likesResult->fetch_assoc()['total']; ?></b> 
+                                </span>
                                 <span><i class="icon-eye"></i>100</span>
                                 <span><i class="icon-comment"></i>5</span>
                             </p>
